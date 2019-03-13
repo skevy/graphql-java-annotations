@@ -50,7 +50,7 @@ jar {
 }
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 gradle.projectsEvaluated {
@@ -144,6 +144,17 @@ publishing {
                 }
             }
         }
+    }
+
+    repositories {
+        maven { 
+	  name 'airbnb'
+	  url MAVEN_REPOSITORY_URL 
+	  credentials {
+	    username = System.getenv('ARTIFACTORY_USERNAME') ?: ''
+	    password = System.getenv('ARTIFACTORY_PASSWORD') ?: ''
+	  }
+	}
     }
 }
 
